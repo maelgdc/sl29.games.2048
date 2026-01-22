@@ -37,7 +37,8 @@ def test__get_cases_vides():
         [2, 2, 2, 2],
         [8, 2, 4, 0],
     ]
-    assert _get_cases_vides(plateau) == [(0,0),(0,3),(1,1),(1,3),(3,3)]
+    result = _get_cases_vides(plateau)
+    assert  result == [(0,0),(0,3),(1,1),(1,3),(3,3)], f"Le résultat aurait du être {[(0,0),(0,3),(1,1),(1,3),(3,3)]} mais il vaut {result}"
     print("OK")
 
 
