@@ -84,6 +84,23 @@ def _ajouter_tuile(plateau: List[List[int]]) -> List[List[int]]:
     :return: Une nouvelle grille avec une tuile ajoutée.
     :rtype: List[List[int]]
     """
+    grille=[]
+
+    for i in range (TAILLE) :
+        ligne = []
+        for x in range (TAILLE) :
+            ligne.append(plateau[i][x]) #je complète ma ligne
+        grille.append(ligne) #j'ajoute  mes lignes
+
+    ligne=random.randint(0,3)
+    colonne=random.randint(0,3)
+    while (grille[ligne][colonne]!=0):
+        ligne=random.randint(0,3)
+        colonne=random.randint(0,3)
+
+    grille[ligne][colonne]=2
+
+    return grille
     raise NotImplementedError("Fonction _ajouter_tuile non implémentée.")
 
 def _supprimer_zeros(ligne: List[int]) -> List[int]:

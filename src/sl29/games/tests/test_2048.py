@@ -53,7 +53,7 @@ def test__ajouter_tuile():
             if valeur == 2:
                 compte_tuiles += 1
     assert compte_tuiles == 1, "Une seule tuile de valeur 2 devrait être ajoutée."
-    assert plateau != nouveau_plateau, "Le plateau original ne doit pas être modifié"
+    assert plateau != nouveau_plateau, "Le plateau original ne doit pas être modifié."
 
     plateau_non_vide = [
         [2, 0, 0, 0],
