@@ -23,7 +23,6 @@ def nouvelle_partie() -> Tuple[List[List[int]], int]:
     score=0
     return (grille,score)
 
-    raise NotImplementedError("Fonction nouvelle_partie non implémentée.")
 
 def jouer_coup(plateau: List[List[int]], direction: str) -> tuple[List[List[int]], int, bool]:
     """
@@ -59,7 +58,6 @@ def _creer_plateau_vide() -> List[List[int]]:
         
     return grille
 
-    raise NotImplementedError("Fonction _creer_plateau_vide non implémentée.")
 
 def _get_cases_vides(plateau: List[List[int]]) -> List[Tuple[int, int]]:
     """
@@ -79,7 +77,6 @@ def _get_cases_vides(plateau: List[List[int]]) -> List[Tuple[int, int]]:
     
     return coordonnees
 
-    raise NotImplementedError("Fonction _get_cases_vides non implémentée.")
 
 def _ajouter_tuile(plateau: List[List[int]]) -> List[List[int]]:
     """
@@ -107,7 +104,6 @@ def _ajouter_tuile(plateau: List[List[int]]) -> List[List[int]]:
     grille[ligne][colonne]=2
 
     return grille
-    raise NotImplementedError("Fonction _ajouter_tuile non implémentée.")
 
 def _supprimer_zeros(ligne: List[int]) -> List[int]:
     """
@@ -125,7 +121,6 @@ def _supprimer_zeros(ligne: List[int]) -> List[int]:
             resultat.append(l)
     
     return resultat
-    raise NotImplementedError("Fonction _supprimer_zeros non implémentée.")
 
 def _fusionner(ligne: List[int]) -> Tuple[List[int], int]:
     """
@@ -136,6 +131,16 @@ def _fusionner(ligne: List[int]) -> Tuple[List[int], int]:
     :return: La ligne après fusion, les points gagnés
     :rtype: Tuple[List[int], int]
     """
+    somme=0
+    liste=[]
+    for l in (0,len(ligne)):
+        if (ligne[l]==ligne(l+1)):
+            somme+=ligne[l]+ligne[l+1]
+            liste.append(ligne[l]+ligne[l+1])
+        else:
+            liste.append(ligne[l])
+    return (liste,somme)
+
     raise NotImplementedError("Fonction _fusionner non implémentée.")
 
 def _completer_zeros(ligne): # ajouter les annotations de type
