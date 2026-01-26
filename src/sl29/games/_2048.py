@@ -17,6 +17,12 @@ def nouvelle_partie() -> Tuple[List[List[int]], int]:
     :return: Une grille TAILLExTAILLE initialisée avec deux tuiles, ainsi que le score à 0.
     :rtype: Tuple[List[List[int]], int]
     """
+    grille=_creer_plateau_vide()
+    grille=_ajouter_tuile(grille)
+    grille=_ajouter_tuile(grille)
+    score=0
+    return (grille,score)
+
     raise NotImplementedError("Fonction nouvelle_partie non implémentée.")
 
 def jouer_coup(plateau: List[List[int]], direction: str) -> tuple[List[List[int]], int, bool]:
@@ -92,11 +98,11 @@ def _ajouter_tuile(plateau: List[List[int]]) -> List[List[int]]:
             ligne.append(plateau[i][x]) #je complète ma ligne
         grille.append(ligne) #j'ajoute  mes lignes
 
-    ligne=random.randint(0,3)
-    colonne=random.randint(0,3)
-    while (grille[ligne][colonne]!=0):
-        ligne=random.randint(0,3)
-        colonne=random.randint(0,3)
+    liste=_get_cases_vides(grille)
+    case=liste[random.randint(0,len(liste)-1)]
+
+    ligne=case[0]
+    colonne=case[1]
 
     grille[ligne][colonne]=2
 
