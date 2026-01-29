@@ -184,10 +184,22 @@ def _deplacer_gauche(plateau: List[List[int]]) -> Tuple[List[List[int]], int]: #
 
     raise NotImplementedError("Fonction _deplacer_gauche non implémentée.")
 
-def _inverser_lignes(plateau): # ajouter les annotations de type
+def _inverser_lignes(plateau: List[List[int]]) ->List[List[int]] : # ajouter les annotations de type
     """
-    DOCSTRING À ÉCRIRE
+    Permet d'inverser le plateau pour préparer un déplacement à droite
+
+    :param plateau: La grille actuelle.
+    :type plateau: List[List[int]]
+    :return: Le plateau après inversion des lignes
+    :rtype: List[List[int]]
     """
+    plateau_inverse=[]
+    for i in range (TAILLE) :
+        ligne = []
+        for x in range (TAILLE-1,0-1,-1) :
+            ligne.append(plateau[i][x]) #je complète ma ligne
+        plateau_inverse.append(ligne) #j'ajoute  mes lignes
+    return plateau_inverse
     raise NotImplementedError("Fonction _inverser_lignes non implémentée.")
 
 def _deplacer_droite(plateau: List[List[int]]) -> Tuple[List[List[int]], int]:
@@ -199,6 +211,9 @@ def _deplacer_droite(plateau: List[List[int]]) -> Tuple[List[List[int]], int]:
     :return: Un tuple contenant la nouvelle grille après déplacement et les points gagnés.
     :rtype: Tuple[List[List[int]], int]
     """
+
+
+
     raise NotImplementedError("Fonction _deplacer_droite non implémentée.")
 
 def _transposer(plateau): # ajouter les annotations de type
