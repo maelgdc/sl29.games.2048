@@ -152,6 +152,9 @@ def _completer_zeros(ligne): # ajouter les annotations de type
     """
     DOCSTRING À ECIRE
     """
+    while len(ligne)<4:
+        ligne.append(0)
+    return ligne
     raise NotImplementedError("Fonction _completer_zeros non implémentée.")
 
 def _deplacer_gauche(plateau) : # ajouter les annotations de type
