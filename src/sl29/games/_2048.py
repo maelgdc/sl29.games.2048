@@ -148,19 +148,40 @@ def _fusionner(ligne: List[int]) -> Tuple[List[int], int]:
 
     raise NotImplementedError("Fonction _fusionner non implémentée.")
 
-def _completer_zeros(ligne): # ajouter les annotations de type
+def _completer_zeros(ligne: List[int]) -> List[int]: # ajouter les annotations de type
     """
-    DOCSTRING À ECIRE
+    Rajoute les zéros pour compléter la ligne.
+
+    :param ligne: Une ligne sans zéros.
+    :type ligne: List[int]
+    :return: La ligne après ajout des zéros
+    :rtype: List[int]
     """
     while len(ligne)<4:
         ligne.append(0)
     return ligne
     raise NotImplementedError("Fonction _completer_zeros non implémentée.")
 
-def _deplacer_gauche(plateau) : # ajouter les annotations de type
+def _deplacer_gauche(plateau: List[List[int]]) -> Tuple[List[List[int]], int]: # ajouter les annotations de type
     """
-    DOCSTRING À ÉCRIRE
+    Permet de faire un mouvement à gauche
+
+    :param plateau: La grille actuelle.
+    :type plateau: List[List[int]]
+    :return: Le plateau après mouvement, les points gagnés
+    :rtype: Tuple[List[List[int]], int]
     """
+
+    nouveau_plateau=[]
+    nouveaux_points=0
+    for ligne in (plateau):
+        ligne_sans_zeros=_supprimer_zeros(ligne)
+        ligne_fusionnee, point=_fusionner(ligne_sans_zeros)
+        nouveaux_points+=point
+        ligne_finale = _completer_zeros(ligne_fusionnee)
+        nouveau_plateau.append(ligne_finale)
+    return (nouveau_plateau, nouveaux_points)
+
     raise NotImplementedError("Fonction _deplacer_gauche non implémentée.")
 
 def _inverser_lignes(plateau): # ajouter les annotations de type
