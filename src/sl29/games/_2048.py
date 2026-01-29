@@ -2,6 +2,7 @@
 
 import random
 from typing import List, Tuple
+import copy 
 
 TAILLE:int = 4
 
@@ -133,12 +134,16 @@ def _fusionner(ligne: List[int]) -> Tuple[List[int], int]:
     """
     somme=0
     liste=[]
-    for l in (0,len(ligne)):
-        if (ligne[l]==ligne(l+1)):
-            somme+=ligne[l]+ligne[l+1]
-            liste.append(ligne[l]+ligne[l+1])
-        else:
-            liste.append(ligne[l])
+    i=0
+    while (i<len(ligne)):
+        if ((i+1) < len(ligne) and ligne[i]==ligne[i+1]):
+            somme += ligne[i]+ligne[i+1]
+            ajout=ligne[i]+ligne[i+1]
+            liste.append(ajout)
+            i+=2
+        else: 
+            liste.append(ligne[i])
+            i+=1
     return (liste,somme)
 
     raise NotImplementedError("Fonction _fusionner non implémentée.")
