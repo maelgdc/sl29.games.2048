@@ -212,9 +212,9 @@ def _deplacer_droite(plateau: List[List[int]]) -> Tuple[List[List[int]], int]:
     :rtype: Tuple[List[List[int]], int]
     """
 
-    plateau_inverse=inverse_ligne(plateau)
-    plateau_inverse2,point=_deplacement_gauche(plateau_inverse)
-    plateau_resultat=_inverse_ligne(plateau_inverse2)
+    plateau_inverse=_inverser_lignes(plateau)
+    plateau_inverse2,point=_deplacer_gauche(plateau_inverse)
+    plateau_resultat=_inverser_lignes(plateau_inverse2)
     return (plateau_resultat, point)
 
     raise NotImplementedError("Fonction _deplacer_droite non implémentée.")
