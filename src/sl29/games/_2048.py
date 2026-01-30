@@ -36,6 +36,17 @@ def jouer_coup(plateau: List[List[int]], direction: str) -> tuple[List[List[int]
     :return: Retourne un tuple (nouveau_plateau, points, est_fini).
     :rtype: tuple[List[List[int]], int, bool]
     """
+    
+    if direction=='g':
+        nouveau_plateau, points=_deplacer_gauche(plateau)
+    elif direction=='d':
+        nouveau_plateau, points=_deplacer_droite(plateau)
+    elif direction=='h':
+        nouveau_plateau, points=_deplacer_haut(plateau)
+    elif direction=='b':
+        nouveau_plateau, points=_deplacer_bas(plateau) 
+    est_fini=_partie_terminee(plateau)
+    return (nouveau_plateau, points, est_fini)
 
     raise NotImplementedError("Fonction jouer_coup non implémentée.")
 
@@ -200,6 +211,7 @@ def _inverser_lignes(plateau: List[List[int]]) ->List[List[int]] : # ajouter les
             ligne.append(plateau[i][x]) #je complète ma ligne
         plateau_inverse.append(ligne) #j'ajoute  mes lignes
     return plateau_inverse
+
     raise NotImplementedError("Fonction _inverser_lignes non implémentée.")
 
 def _deplacer_droite(plateau: List[List[int]]) -> Tuple[List[List[int]], int]:
@@ -235,6 +247,7 @@ def _transposer(plateau: List[List[int]]) ->List[List[int]] : # ajouter les anno
             ligne.append(plateau[x][i]) #je complète ma ligne
         plateau_inverse.append(ligne) #j'ajoute  mes lignes
     return plateau_inverse
+
     raise NotImplementedError("Fonction _transposer non implémentée.")
 
 def _deplacer_haut(plateau: List[List[int]]) -> Tuple[List[List[int]], int]:
@@ -242,8 +255,16 @@ def _deplacer_haut(plateau: List[List[int]]) -> Tuple[List[List[int]], int]:
     Déplace les tuiles vers le haut en fusionnant les valeurs identiques.
 
     :param plateau: La grille actuelle du jeu.
+    :type plateau: List[List[int]]
     :return: Un tuple contenant la nouvelle grille après déplacement et les points gagnés.
+    :rtype: Tuple[List[List[int]], int]
     """
+
+    plateau_inverse=_transposer(plateau)
+    plateau_inverse2,point=_deplacer_gauche(plateau_inverse)
+    plateau_resultat=_transposer(plateau_inverse2)
+    return (plateau_resultat, point)
+
     raise NotImplementedError("Fonction _deplacer_haut non implémentée.")
 
 
@@ -252,16 +273,43 @@ def _deplacer_bas(plateau: List[List[int]]) -> Tuple[List[List[int]], int]:
     Déplace les tuiles vers le bas en fusionnant les valeurs identiques.
 
     :param plateau: La grille actuelle du jeu.
+    :type plateau: List[List[int]]
     :return: Un tuple contenant la nouvelle grille après déplacement et les points gagnés.
+    :rtype: Tuple[List[List[int]], int]
     """
+    
+    plateau_inverse=_transposer(plateau)
+    plateau_inverse2,point=_deplacer_droite(plateau_inverse)
+    plateau_resultat=_transposer(plateau_inverse2)
+    return (plateau_resultat, point)
+    
     raise NotImplementedError("Fonction _deplacer_bas non implémentée.")
 
 def _partie_terminee(plateau: List[List[int]]) -> bool:
     """
-    DOCSTRING À ÉCRIRE
+    Vérifier si la partie est finie
+
+    :param plateau: La grille actuelle du jeu.
+    :type plateau: List[List[int]]
+    :return: Un booléen contenant la réponse à la question
+    :rtype: bool
     """
     # Partie non terminee si il y a des cases vides
     # Partie non terminee si il y a des fusions possibles (horizontale ou verticale)
     # Sinon c'est vrai
+    case_vides=_get_cases_vides(plateau)
+    
+    
+    for ligne in plateau:
+        for colonne in ligne
+        if ((i+1) < len(ligne) and ligne[i]==ligne[i+1]):
+            fusionable=True
+        else: 
+            liste.append(ligne[i])
+            i+=1
+    
+    if len(case_vides)!=0 or len(case_fusionnable_1)!=0 or len(case_fusionnable_2)!=0 :
+        return False
+    else : return True
 
     raise NotImplementedError("Fonction _partie_terminee non implémentée.")
