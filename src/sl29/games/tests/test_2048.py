@@ -193,7 +193,21 @@ def test__deplacer_droite():
 
 def test__transposer():
     print("----> Tests de _transposer...")
-    raise NotImplementedError("Tests de _transposer non implémentés.")
+    plateau = [
+        [2, 2, 0, 0],
+        [2, 2, 2, 2],
+        [0, 0, 4, 4],
+        [8, 4, 2, 2]
+    ]
+    attendu_p = [
+        [2, 2, 0, 8],
+        [2, 2, 0, 4],
+        [0, 2, 4, 2],
+        [0, 2, 4, 2]
+    ]
+
+    resultat = _transposer(plateau)
+    assert resultat == attendu_p, f"Pour l'entrée {plateau}, attendu {attendu_p} mais obtenu {resultat}"
     print("OK")
 
 def test__deplacer_haut():

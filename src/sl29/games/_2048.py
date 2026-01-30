@@ -219,10 +219,22 @@ def _deplacer_droite(plateau: List[List[int]]) -> Tuple[List[List[int]], int]:
 
     raise NotImplementedError("Fonction _deplacer_droite non implémentée.")
 
-def _transposer(plateau): # ajouter les annotations de type
+def _transposer(plateau: List[List[int]]) ->List[List[int]] : # ajouter les annotations de type
     """
-    DOCSTRING À ÉCRIRE
+    Permet de transposer le plateau le plateau pour préparer un déplacement en haut
+
+    :param plateau: La grille actuelle.
+    :type plateau: List[List[int]]
+    :return: Le plateau après transposition
+    :rtype: List[List[int]]
     """
+    plateau_inverse=[]
+    for i in range (TAILLE) :
+        ligne = []
+        for x in range (TAILLE) :
+            ligne.append(plateau[x][i]) #je complète ma ligne
+        plateau_inverse.append(ligne) #j'ajoute  mes lignes
+    return plateau_inverse
     raise NotImplementedError("Fonction _transposer non implémentée.")
 
 def _deplacer_haut(plateau: List[List[int]]) -> Tuple[List[List[int]], int]:
