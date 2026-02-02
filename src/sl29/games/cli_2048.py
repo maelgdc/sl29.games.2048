@@ -1,4 +1,4 @@
-g"""
+"""
 Interface en ligne de commande (CLI) pour tester le jeu 2048.
 
 Ce fichier permet de vérifier le bon fonctionnement de la logique
