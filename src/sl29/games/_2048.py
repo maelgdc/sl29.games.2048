@@ -46,7 +46,11 @@ def jouer_coup(plateau: List[List[int]], direction: str) -> tuple[List[List[int]
     elif direction=='b':
         nouveau_plateau, points=_deplacer_bas(plateau) 
     est_fini=_partie_terminee(plateau)
-    return (nouveau_plateau, points, est_fini)
+    
+    if plateau==nouveau_plateau:
+        return (nouveau_plateau, points, est_fini)
+    else :
+        return (_ajouter_tuile(nouveau_plateau), points, est_fini)
 
     raise NotImplementedError("Fonction jouer_coup non implémentée.")
 
@@ -299,17 +303,28 @@ def _partie_terminee(plateau: List[List[int]]) -> bool:
     # Sinon c'est vrai
     case_vides=_get_cases_vides(plateau)
     
+    plateau2=[]
     
-    for ligne in plateau:
-        for colonne in ligne
-        if ((i+1) < len(ligne) and ligne[i]==ligne[i+1]):
-            fusionable=True
-        else: 
-            liste.append(ligne[i])
-            i+=1
+    plateau3= []
     
-    if len(case_vides)!=0 or len(case_fusionnable_1)!=0 or len(case_fusionnable_2)!=0 :
+    for ligne in plateau :
+        plateau2.append(_supprimer_zeros(ligne))
+        
+    for ligne in _transposer(plateau) :
+        plateau3.append(_supprimer_zeros(ligne))
+    
+    for ligne in plateau2 :
+        ligne2, points= _fusionner(ligne)
+        if points != 0 :
+            return False
+        
+    for ligne in plateau3 :
+        ligne2, points= _fusionner(ligne)
+        if points != 0 :
+            return False
+    if len(case_vides)!=0:
         return False
-    else : return True
-
+    
+    return True
+        
     raise NotImplementedError("Fonction _partie_terminee non implémentée.")
