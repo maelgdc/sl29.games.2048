@@ -45,6 +45,8 @@ def jouer_coup(plateau: List[List[int]], direction: str) -> tuple[List[List[int]
         nouveau_plateau, points=_deplacer_haut(plateau)
     elif direction=='b':
         nouveau_plateau, points=_deplacer_bas(plateau) 
+    else :
+        return (plateau, 0, False)
     est_fini=_partie_terminee(plateau)
     
     if plateau==nouveau_plateau:
@@ -112,12 +114,17 @@ def _ajouter_tuile(plateau: List[List[int]]) -> List[List[int]]:
         grille.append(ligne) #j'ajoute  mes lignes
 
     liste=_get_cases_vides(grille)
-    case=liste[random.randint(0,len(liste)-1)]
-
+    if (len(liste)>=1):
+        case=liste[random.randint(0,len(liste)-1)]
+    else : return grille
     ligne=case[0]
     colonne=case[1]
 
-    grille[ligne][colonne]=2
+    x=random.randint(1,10)
+    if (x==10):
+        grille[ligne][colonne]=4
+    else :
+        grille[ligne][colonne]=2
 
     return grille
 
